@@ -244,18 +244,18 @@ public final strictfp class Graph {
       final int ni = n.pos();
       final LinkedList<GraphNode> in = new LinkedList<>(), out = new LinkedList<>();
       for (final GraphEdge e : n.ins) {
-        if (e.isDashed()) {
-          continue;
-        }
+        // if (e.isDashed()) {
+        // continue;
+        // }
         final GraphNode a = e.a();
         if (!in.contains(a)) {
           in.add(a);
         }
       }
       for (final GraphEdge e : n.outs) {
-        if (e.isDashed()) {
-          continue;
-        }
+        // if (e.isDashed()) {
+        // continue;
+        // }
         final GraphNode b = e.b();
         if (!out.contains(b)) {
           out.add(b);
@@ -319,9 +319,9 @@ public final strictfp class Graph {
   /** Layout step #2: reverses all backward edges. */
   private void layout_backEdges() {
     for (final GraphEdge e : edges) {
-      if (e.isDashed()) {
-        continue;
-      }
+      // if (e.isDashed()) {
+      // continue;
+      // }
       if (e.a().pos() < e.b().pos()) {
         e.set(e.bhead(), e.ahead()).reverse();
       }
@@ -393,9 +393,6 @@ public final strictfp class Graph {
   /** Layout step #4: add dummy nodes so that each edge only goes between adjacent layers. */
   private void layout_dummyNodesIfNeeded() {
     for (final GraphEdge edge : new ArrayList<>(edges)) {
-      if (edge.isDashed()) {
-        continue;
-      }
       GraphEdge e = edge;
       GraphNode a = e.a();
       final GraphNode b = e.b();

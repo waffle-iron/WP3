@@ -616,4 +616,8 @@ public final strictfp class GraphEdge {
   public int weight() {
     return this.weight;
   }
+  
+  public boolean isDashed(){
+    return ((AlloyTuple)this.uuid).isDashed;
+  }
 }
